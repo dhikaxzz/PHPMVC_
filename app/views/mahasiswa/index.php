@@ -8,16 +8,18 @@
 
     <div class="row">
         <div class="col-lg-6">
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#formModal">
+            <button type="button" class="btn btn-primary tombolTambahData" data-bs-toggle="modal" data-bs-target="#formModal">
                 Tambah data Mahasiswa
             </button>
             <br><br>
             <h3>Daftar Mahasiswa</h3>
                     <ul class="list-group">
                         <?php foreach($data['mhs'] as $mhs ) : ?>
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <li class="list-group-item">
                             <?= $mhs['nama']; ?>
-                            <a href="<?= BASEURL; ?>/mahasiswa/detail/<?= $mhs['id']; ?>" class="badge rounded-pill bg-secondary">detail</a>
+                            <a href="<?= BASEURL; ?>/mahasiswa/hapus/<?= $mhs['id']; ?>" class="badge rounded-pill bg-danger float-end m-lg-1" onclick="return confirm('YAKIN NI BOSS??');">Hapus</a>
+                            <a href="<?= BASEURL; ?>/mahasiswa/ubah/<?= $mhs['id']; ?>" class="badge rounded-pill bg-success float-end m-lg-1 tampilModalUbah" data-id="<?= $mhs['id']; ?>">Ubah</a>
+                            <a href="<?= BASEURL; ?>/mahasiswa/detail/<?= $mhs['id']; ?>" class="badge rounded-pill bg-secondary float-end m-lg-1">Detail</a>
                         </li>
                         <?php endforeach; ?>
                     </ul>
@@ -25,11 +27,11 @@
     </div>
 </div>
 
-<div class="modal fade" id="formModal" tabindex="-1" aria-labelledby="judulModal" aria-hidden="true">
+<div class="modal fade" id="formModal" tabindex="-1" aria-labelledby="formModal" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="judulModal">Tambah Data Mahasiswa</h5>
+        <h5 class="modal-title" id="formModalLabel">Tambah Data Mahasiswa</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
 
