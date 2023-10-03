@@ -50,4 +50,13 @@ class Mahasiswa extends Controller{
         echo json_encode ($this->model('Mahasiswa_model')->getMahasiswaById($_POST['id']));
     }
 
+    public function cari(){
+        $data['judul'] = 'Daftar Mahasiswa';
+        $data['mhs'] = $this->model('Mahasiswa_model')->CariDataMahasiswa();
+        $this->view('templates/header', $data);
+        $this->view('mahasiswa/index', $data);
+        $this->view('templates/footer');
+    }
+
+
 }
